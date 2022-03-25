@@ -17,3 +17,13 @@ function fetchData() {
             document.getElementById("motd").innerText = status;
         });
 }
+
+// URL Args
+const urlParams = new URLSearchParams(window.location.search);
+document.querySelector('#input').value = urlParams.get('user');
+fetchData();
+
+if (urlParams.get('app') == 'wsite') {
+    window.location.replace('https://jaydendev.github.io');
+    const stat = "redir-wsite";
+}
