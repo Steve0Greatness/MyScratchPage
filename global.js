@@ -27,3 +27,10 @@ if (urlParams.get('app') == 'wsite') {
     window.location.replace('https://jaydendev.github.io');
     const stat = "redir-wsite";
 }
+
+// have a delay on how often fetchData() can be called
+let timeout = null;
+document.getElementById('input').addEventListener('keyup', function(e) {
+    clearTimeout(timeout);
+    timeout = setTimeout(fetchData, 500);
+});
