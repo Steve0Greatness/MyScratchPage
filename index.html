@@ -11,21 +11,18 @@
 </head>
 
 <body>
-    <div id="content">
-        <div id="nav" style="background-color: crimson;" class="p-3 text-white">
-            <h1 id="header-title">MyScratchPage</h1>
-        </div>
+    <div id="nav" style="background-color: crimson;" class="p-3 text-white">
+        <h1>Project</h1>
+    </div>
+    <hr>
+    <input style="background-color: crimson;" class=" text-white p-3 w-1/2 outline-0" id="input" type="text" placeholder="Username" /><button id="queryBtn" style="background-color: crimson;" class="hover:text-white text-white p-3 w-1/2 border-l-2" onClick="fetchData()">Query</button>
+    <hr>
+    <div id="header" style="background-color: crimson;" class="p-3 h-screen text-white">
+        <h1 class="text-5xl " id="username">User</h1>
+        <br>
         <hr>
-        <input style="background-color: crimson;" class=" text-white p-3 w-1/2 outline-0" id="input" type="text" placeholder="Username" /><button id="queryBtn" style="background-color: crimson;" class="hover:text-white text-white p-3 w-1/2 border-l-2"
-            onClick="fetchData()">Query</button>
-        <hr>
-        <div id="header" style="background-color: crimson;" class="p-3 h-screen text-white">
-            <h1 class="text-5xl " id="username"></h1>
-            <br>
-            <hr>
-            <p class="text-2xl" id="motd"></p>
-            <p class="text-1xl" id="mostPostedForum"></p>
-        </div>
+        <p class="text-2xl" id="motd">Ocular Status</p>
+        <p id="mostPostedForum">Most Posted Forum</p>
     </div>
 </body>
 

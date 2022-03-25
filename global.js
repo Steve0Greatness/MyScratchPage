@@ -3,47 +3,40 @@ function fetchData() {
     fetch('https://my-ocular.jeffalo.net/api/user/' + input)
         .then(res => res.json())
         .then(data => {
-            const { color } = data;
+            const { color, status } = data;
             document.getElementById("header").style.backgroundColor = color;
             document.getElementById("nav").style.backgroundColor = color;
             document.getElementById("queryBtn").style.backgroundColor = color;
             document.querySelector('#input').style.backgroundColor = color;
+            document.getElementById("motd").innerText = status;
         });
     document.querySelector('#username').innerText = input;
-    fetch('https://my-ocular.jeffalo.net/api/user/' + input)
-        .then(res => res.json())
-        .then(data => {
-            const { status } = data;
-            document.getElementById("motd").innerText = "My status is: " + status;
-        });
-    // Fetch the forum info credit to god286
-    fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + input)
-        .then(res => res.json())
-        .then(data => {
-            // Get the counts
-            const counts = data.counts;
-            // Get the keys in the counts object, and then reverse it
-            let keys = Object.keys(counts).reverse();
-            // The reason why we reverse it is to use .pop which removes the last element (since it is reversed, the first element, which is "total")
-            keys.pop();
-            // Define the variables
-            let mostPostedForum = "N/A";
-            let mostPostedForumCount = 0;
-            // Loop through all the forums
-            for (let i = 0; i < keys.length; i++) {
-                // If the forum looped has more posts than the mostPostedForumCount then that is the most posted currently so set the variable
-                // It will still continue through all the forums, then the one with the most posts is found
-                if (counts[keys[i]].count > mostPostedForumCount) {
-                    mostPostedForum = keys[i];
-                    mostPostedForumCount = counts[keys[i]].count;
-                }
-            }
-            // mostPostedForum and mostPostedForumCount
-            document.querySelector('#mostPostedForum').innerText = "My favorite topic is " + mostPostedForum;
-        });
-    document.querySelector('#header-title').innerText = input + "'s Scratch Page";
-    document.querySelector('#input').value = "";
 }
+// Made by @webdev03
+fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + input)
+    .then(res => res.json())
+    .then(data => {
+        // Get the counts
+        const counts = data.counts;
+        // Get the keys in the counts object, and then reverse it
+        let keys = Object.keys(counts).reverse();
+        // The reason why we reverse it is to use .pop which removes the last element (since it is reversed, the first element, which is "total")
+        keys.pop();
+        // Define the variables
+        let mostPostedForum = "N/A";
+        let mostPostedForumCount = 0;
+        // Loop through all the forums
+        for (let i = 0; i < keys.length; i++) {
+            // If the forum looped has more posts than the mostPostedForumCount then that is the most posted currently so set the variable
+            // It will still continue through all the forums, then the one with the most posts is found
+            if (counts[keys[i]].count > mostPostedForumCount) {
+                mostPostedForum = keys[i];
+                mostPostedForumCount = counts[keys[i]].count;
+            }
+        }
+        // mostPostedForum and mostPostedForumCount
+        document.querySelector('#mostPostedForum').innerText = mostPostedForum;
+    });
 
 // URL Args
 const urlParams = new URLSearchParams(window.location.search);
