@@ -16,17 +16,37 @@ function fetchData() {
             const { status } = data;
             document.getElementById("motd").innerText = status;
         });
+    // Fetch the forum info credit to god286
+    fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + input)
+        .then(res => res.json())
+        .then(data => {
+            // Get the counts
+            const counts = data.counts;
+            // Get the keys in the counts object, and then reverse it
+            let keys = Object.keys(counts).reverse();
+            // The reason why we reverse it is to use .pop which removes the last element (since it is reversed, the first element, which is "total")
+            keys.pop();
+            // Define the variables
+            let mostPostedForum = "N/A";
+            let mostPostedForumCount = 0;
+            // Loop through all the forums
+            for (let i = 0; i < keys.length; i++) {
+                // If the forum looped has more posts than the mostPostedForumCount then that is the most posted currently so set the variable
+                // It will still continue through all the forums, then the one with the most posts is found
+                if (counts[keys[i]].count > mostPostedForumCount) {
+                    mostPostedForum = keys[i];
+                    mostPostedForumCount = counts[keys[i]].count;
+                }
+            }
+            // mostPostedForum and mostPostedForumCount
+            document.querySelector('#mostPostedForum').innerText = mostPostedForum;
+        });
 }
 
 // URL Args
 const urlParams = new URLSearchParams(window.location.search);
 document.querySelector('#input').value = urlParams.get('user');
 fetchData();
-
-if (urlParams.get('app') == 'wsite') {
-    window.location.replace('https://jaydendev.github.io');
-    const stat = "redir-wsite";
-}
 
 // have a delay on how often fetchData() can be called
 let timeout = null;
