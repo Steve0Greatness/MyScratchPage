@@ -3,20 +3,16 @@ function fetchData() {
     fetch('https://my-ocular.jeffalo.net/api/user/' + input)
         .then(res => res.json())
         .then(data => {
-            const { color } = data;
+            const { color, status } = data;
             document.getElementById("header").style.backgroundColor = color;
             document.getElementById("nav").style.backgroundColor = color;
             document.getElementById("queryBtn").style.backgroundColor = color;
             document.querySelector('#input').style.backgroundColor = color;
-        });
-    document.querySelector('#username').innerText = input;
-    fetch('https://my-ocular.jeffalo.net/api/user/' + input)
-        .then(res => res.json())
-        .then(data => {
-            const { status } = data;
             document.getElementById("motd").innerText = status;
         });
-    // Fetch the forum info credit to god286
+    document.querySelector('#username').innerText = input;
+}
+    // Made by @webdev03
     fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + input)
         .then(res => res.json())
         .then(data => {
