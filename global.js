@@ -11,9 +11,8 @@ function fetchData() {
             document.getElementById("motd").innerText = status;
         });
     document.querySelector('#username').innerText = input;
-}
-// Made by @webdev03
-fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + input)
+    // Made by @webdev03
+    fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + input)
     .then(res => res.json())
     .then(data => {
         // Get the counts
@@ -37,6 +36,7 @@ fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + input)
         // mostPostedForum and mostPostedForumCount
         document.querySelector('#mostPostedForum').innerText = mostPostedForum;
     });
+}
 
 // URL Args
 const urlParams = new URLSearchParams(window.location.search);
