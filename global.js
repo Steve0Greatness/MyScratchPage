@@ -14,7 +14,7 @@ function fetchData() {
         .then(res => res.json())
         .then(data => {
             const { status } = data;
-            document.getElementById("motd").innerText = status;
+            document.getElementById("motd").innerText = "My status is: " + status;
         });
     // Fetch the forum info credit to god286
     fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + input)
@@ -39,8 +39,10 @@ function fetchData() {
                 }
             }
             // mostPostedForum and mostPostedForumCount
-            document.querySelector('#mostPostedForum').innerText = mostPostedForum;
+            document.querySelector('#mostPostedForum').innerText = "My favorite topic is " + mostPostedForum;
         });
+    document.querySelector('#header-title').innerText = input + "'s Scratch Page";
+    document.querySelector('#input').value = "";
 }
 
 // URL Args
