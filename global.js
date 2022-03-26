@@ -48,10 +48,4 @@ function fetchData() {
             // mostPostedForum and mostPostedForumCount
             document.querySelector('#mostPostedForum').innerText = mostPostedForum;
         });
-    fetch('https://scratchdb.lefty.one/v3/user/info/' + input)
-        .then(res => res.json())
-        .then(data => {
-            const status = data.bio;
-            $('#status').innerText = status;
-        });
 }
