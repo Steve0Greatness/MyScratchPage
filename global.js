@@ -10,10 +10,9 @@ function fetchData() {
             document.querySelector('#input').style.backgroundColor = color;
             document.getElementById("motd").innerText = "My ocular status is: " + status;
         });
-    document.querySelector('#username').innerText = "My name is: " + input;
-}
-// Made by @webdev03
-fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + document.querySelector('#input').value)
+    document.querySelector('#username').innerText = input;
+    // Made by @webdev03
+    fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + document.querySelector('#input').value)
     .then(res => res.json())
     .then(data => {
         // Get the counts
@@ -37,6 +36,8 @@ fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + document.querySelector
         // mostPostedForum and mostPostedForumCount
         document.querySelector('#mostPostedForum').innerText = "The forum I am most active in is " + mostPostedForum;
     });
+    document.querySelector('#username').innerText = "My name is: " + input;
+}
 
 // URL Args
 const urlParams = new URLSearchParams(window.location.search);
