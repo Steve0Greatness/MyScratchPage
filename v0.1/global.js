@@ -1,12 +1,3 @@
-// use jquery so that when enter is pressed in the input field, fetchData is called
-$(document).ready(function() {
-    $('#input').keypress(function(e) {
-        if (e.which == 13) {
-            fetchData();
-        }
-    });
-});
-
 function fetchData() {
     const input = document.getElementById('input').value;
     fetch('https://my-ocular.jeffalo.net/api/user/' + input)
@@ -14,13 +5,11 @@ function fetchData() {
         .then(data => {
             const { color, status } = data;
             document.getElementById("header").style.backgroundColor = color;
+            document.getElementById("nav").style.backgroundColor = color;
+            document.getElementById("queryBtn").style.backgroundColor = color;
+            document.querySelector('#input').style.backgroundColor = color;
             document.getElementById("motd").innerText = "My ocular status is: " + status;
-            $('#username').css('color', color);
         });
-<<<<<<< HEAD
-    document.querySelector('#username').innerText = " " + input;
-}
-=======
     document.querySelector('#username').innerText = input;
     // Made by @webdev03
     fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + document.querySelector('#input').value)
@@ -61,4 +50,3 @@ document.getElementById('#input').addEventListener('keyup', function(e) {
     clearTimeout(timeout);
     timeout = setTimeout(fetchData, 500);
 });
->>>>>>> 65611a453bc2eebd7fef56c7f7d154170e789b94
