@@ -8,11 +8,11 @@ function fetchData() {
             document.getElementById("nav").style.backgroundColor = color;
             document.getElementById("queryBtn").style.backgroundColor = color;
             document.querySelector('#input').style.backgroundColor = color;
-            document.getElementById("motd").innerText = status;
+            document.getElementById("motd").innerText = "My ocular status is: " + status;
         });
     document.querySelector('#username').innerText = input;
     // Made by @webdev03
-    fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + input)
+    fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + document.querySelector('#input').value)
     .then(res => res.json())
     .then(data => {
         // Get the counts
@@ -34,8 +34,9 @@ function fetchData() {
             }
         }
         // mostPostedForum and mostPostedForumCount
-        document.querySelector('#mostPostedForum').innerText = mostPostedForum;
+        document.querySelector('#mostPostedForum').innerText = "The forum I am most active in is " + mostPostedForum;
     });
+    document.querySelector('#username').innerText = "My name is: " + input;
 }
 
 // URL Args
@@ -45,7 +46,7 @@ fetchData();
 
 // have a delay on how often fetchData() can be called
 let timeout = null;
-document.getElementById('input').addEventListener('keyup', function(e) {
+document.getElementById('#input').addEventListener('keyup', function(e) {
     clearTimeout(timeout);
     timeout = setTimeout(fetchData, 500);
 });
