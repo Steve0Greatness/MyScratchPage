@@ -24,7 +24,7 @@ function fetchData() {
         });
     document.querySelector('#username').innerText = input;
     // Made by @webdev03
-    fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + document.querySelector('#input').value)
+    fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + document.querySelector('#input').value, )
         .then(res => res.json())
         .then(data => {
             // Get the counts
@@ -47,5 +47,11 @@ function fetchData() {
             }
             // mostPostedForum and mostPostedForumCount
             document.querySelector('#mostPostedForum').innerText = mostPostedForum;
+        });
+    fetch('https://scratchdb.lefty.one/v3/user/info/' + input)
+        .then(res => res.json())
+        .then(data => {
+            const status = data.bio;
+            $('#status').innerText = status;
         });
 }
