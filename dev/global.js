@@ -57,3 +57,30 @@ function fetchData() {
             $('#pfp').attr('src', img);
         });
 }
+
+function detectURLArgPresence() {
+    // detect if the url contains parameters
+    if (window.location.href.indexOf("?") > -1) {
+        // if it does, grab the parameters
+        getVars();
+    }
+}
+
+function getVars() {
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+    // if the user parameter then run getUserFromURI
+    if (urlParams.has('user')) {
+        getUserFromURI();
+    }
+}
+
+function getUserFromURI() {
+    const user = urlParams.get('user');
+    console.log(user);
+    // set element by id "input" to the user
+    document.getElementById("input").value = user;
+}
+
+detectUrlArgPresence();
