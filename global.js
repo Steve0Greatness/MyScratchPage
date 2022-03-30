@@ -58,9 +58,9 @@ function fetchData() {
         });
 }
 
-// url vars
-const queryString = window.location.search;
-console.log(queryString);
-const urlParams = new URLSearchParams(queryString);
-const user = urlParams.get('user');
-$('#input').val(user);
+// parse URL vars, and if there is a "user" in the URL, set it to the input field
+if (window.location.href.indexOf("user") > -1) {
+    const user = window.location.href.split("user=")[1];
+    document.getElementById('input').value = user;
+    fetchData();
+}
