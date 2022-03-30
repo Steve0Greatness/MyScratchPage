@@ -48,4 +48,19 @@ function fetchData() {
             // mostPostedForum and mostPostedForumCount
             document.querySelector('#mostPostedForum').innerText = mostPostedForum;
         });
+    fetch('https://my-ocular.jeffalo.net/api/user/' + input)
+        .then(res => res.json())
+        .then(data => {
+            // grab "id" from the data
+            const { id } = data;
+            const img = "https://uploads.scratch.mit.edu/get_image/user/" + data.id + "_60x60.png";
+            $('#pfp').attr('src', img);
+        });
 }
+
+// url vars
+const queryString = window.location.search;
+console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
+const user = urlParams.get('user');
+$('#input').val(user);
