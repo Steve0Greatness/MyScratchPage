@@ -83,4 +83,4 @@ function getUserFromURI() {
     document.getElementById("input").value = user;
 }
 
-detectUrlArgPresence();
+detectURLArgPresence();
