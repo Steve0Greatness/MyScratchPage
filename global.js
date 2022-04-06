@@ -48,12 +48,11 @@ function fetchData() {
             // mostPostedForum and mostPostedForumCount
             document.querySelector('#mostPostedForum').innerText = mostPostedForum;
         });
-    fetch('https://my-ocular.jeffalo.net/api/user/' + input)
+    fetch('https://scratchdb.lefty.one/v3/user/info/' + input)
         .then(res => res.json())
         .then(data => {
-            // grab "id" from the data
-            const { id } = data;
-            const img = "https://uploads.scratch.mit.edu/get_image/user/" + data.id + "_60x60.png";
+            const height = "24",
+                img = `https://uploads.scratch.mit.edu/get_image/user/${data.id}_${height}x${height}.png`;
             $('#pfp').attr('src', img);
         });
 }

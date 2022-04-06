@@ -9,11 +9,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="global.js"></script>
     <link rel="stylesheet" href="tw.css">
+    <script differ src="/_source/audio_test.js"></script>
 </head>
 
 <body>
-    <audio autoplay>
-        <source src="img/audio.mp3" type="audio/mp3">
+    <audio id="Wii" autoplay>
+        <source src="_source/audio.mp3" type="audio/mp3">
     </audio>
     <div class="p-3 flex bg-blue-500 text-white" id="header">
         <h1>My Scratch Page by JaydenDev, (v0.2.2)</h1>
@@ -29,7 +30,7 @@
             <div class="flex">
                 <label>The forum I'm most active in is:</label>&nbsp;
                 <p id="mostPostedForum"></p>
-                <img id="pfp"></img>
+                <img id="pfp" height="16"></img>
             </div>
         </div>
     </div>
